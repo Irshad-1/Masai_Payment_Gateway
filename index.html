@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 60%;
+        }
+        form>input{
+            margin: 20px;
+            font-size: 25px;
+        }
+        h1{
+            text-align: center;
+            color: rgb(38, 133, 196);
+        }
+        #container{
+            background-color: rgb(231, 226, 220);
+            width: 40%;
+            margin: auto;
+        }
+        form>input:last-child{
+            border-radius: 5px;
+            background-color: rgb(25, 132, 225);
+            color: white;
+            border:0;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Payment Page</h1>
+        <form action="">
+            <input id="number" type="number" placeholder="Enter your card number" required>
+            <input id="cvv" type="password" placeholder="Enter CVV" pattern="^[0-9]{3}" required>
+            <input id="month" type="month" id="month" required>
+            <input id="name" type="text" placeholder="Enter your name" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+<script>
+    var today=new Date();
+    var mm=today.getMonth()+1;
+    var yyyy=today.getFullYear();
+
+    if(mm<10){
+        mm='0'+mm;
+    }
+    today=yyyy+'-'+mm;
+    document.getElementById('month').setAttribute('min',today);
+    
+    var card=[
+        {
+            cardNo:1234123412341234,
+            cvv:112
+        },
+        {
+            cardNo:4321432143214321,
+            cvv:432
+        }
+    ];
+
+    document.querySelector('form').addEventListener('submit',()=>{
+        event.preventDefault();
+        var cardNumber=document.querySelector('#number').value;
+        var cvv=document.querySelector('#cvv').value;
+        if((cardNumber+"").length==16 && (cvv+"").length==3){
+
+            var flag=false;
+            card.forEach((element)=>{
+                if(element.cardNo==cardNumber && element.cvv==cvv)
+                flag=true;
+            });
+
+            if(flag)
+            window.location.href='OTP.html';
+        }
+        else{
+            alert("error");
+        }
+    });
+    
+
+
+
+</script>
+</html>

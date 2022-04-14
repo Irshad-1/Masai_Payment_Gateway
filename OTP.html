@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>OTP Page</h1>
+
+    <form action="">
+        <input type="number" placeholder="Enter your OTP">
+        <input type="submit" value="submit">
+    </form>
+
+</body>
+<script>
+    document.querySelector('form').addEventListener('submit',()=>{
+        event.preventDefault();
+        var otp=document.querySelector('form >input:first-child').value;
+        if(otp==1234)
+        alert("Payment Successful");
+        else
+        alert("Wrong OTP Payment failed");
+    })
+
+
+</script>
+</html>
